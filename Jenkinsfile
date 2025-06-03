@@ -48,6 +48,7 @@ pipeline {
     post {
         always {
             script {
+                // За потреби можна зберігати URL вебхука або інші секрети, якщо потрібні
                 env.webhookUrl = sh(
                     script: 'hcp vault-secrets secrets open slack_webhook --format=json | jq -r .static_version.value',
                     returnStdout: true
@@ -57,17 +58,17 @@ pipeline {
 
         success {
             slackSend(
-                webhookUrl: env.webhookUrl,
+                channel: '#назва_твого_каналу',
                 message: "✅ Build success!",
-                color: "#00FF00"
+                color: "good"
             )
         }
 
         failure {
             slackSend(
-                webhookUrl: env.webhookUrl,
+                channel: '#назва_твого_каналу',
                 message: "❌ Build failed!",
-                color: "#FF0000"
+                color: "danger"
             )
         }
     }
