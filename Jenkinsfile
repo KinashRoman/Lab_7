@@ -11,8 +11,8 @@ pipeline {
         stage('Auth to HCP') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'hcp',
-                    usernameVariable: 'jenkins-sp-276562@f69e8f79-03c5-4448-a802-6848a69410aa',
-                    passwordVariable: 'iam/project/f69e8f79-03c5-4448-a802-6848a69410aa/service-principal/jenkins-sp')]) {
+                    usernameVariable: 'Hlkj6rvPVSIyUKjgqswOXS4iUpsIC9l5',
+                    passwordVariable: 'x5ghgDc3WPhn3BwtupY9XRCx095dR5H6oKYnxNSs7WvrX4-tGToebNeFQ27B3aa_')]) {
                     sh '''
                         hcp auth login --client-id $MY_ID --client-secret $MY_SECRET
                     '''
